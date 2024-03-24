@@ -16,7 +16,7 @@ namespace RPG.Stats
             return progression.GetStat(stat, characterClass, startinglevel);
         }
 
-
+        
         
     }
 }
