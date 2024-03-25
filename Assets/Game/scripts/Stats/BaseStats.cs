@@ -19,17 +19,13 @@ namespace RPG.Stats
             Experience experience = GetComponent<Experience>();
             if (experience != null)
             {
-                experience.onDoneStuff += OnStuffDone;
+                experience.onExperienceGained += UpdateLevel;
             }
         }
 
-        private bool OnStuffDone(float value)
-        {
-            print(value);
-            return true;
-        }
+        
 
-        private void Update()
+        private void UpdateLevel()
         {
             int newLevel = CalculateLevel();
             if (newLevel > currentLevel)
