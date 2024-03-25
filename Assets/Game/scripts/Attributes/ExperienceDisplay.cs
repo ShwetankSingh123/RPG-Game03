@@ -16,7 +16,7 @@ namespace RPG.Attribute
 
         private void Update()
         {
-            GetComponent<Text>().text = string.Format("{0:0}",experience.GetPoints());
+            GetComponent<Text>().text = string.Format("{0:0}",experience.GetPoints()); //string vs String
         }
     }
 }
