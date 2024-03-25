@@ -9,11 +9,14 @@ namespace RPG.Stats
     {
         [SerializeField] float experiencePoints = 0;
 
-        
+        public delegate bool ExampleDelegate(float value);
+        public event ExampleDelegate onDoneStuff;
 
         public void GainExperience(float experience)
         {
             experiencePoints += experience;
+            bool result = onDoneStuff(5f);
+            print(result);
         }
 
         public float GetPoints()
