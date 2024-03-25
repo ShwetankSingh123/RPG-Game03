@@ -9,19 +9,23 @@ namespace RPG.Attribute
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] float healthPoints = 100f;
+        float healthPoints = -1f;
         bool isDead = false;
 
         private void Start()
         {
-            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+            if(healthPoints < 0)
+            {
+                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+            }
+            
         }
         public void TakeDamage(GameObject instigator,float damage)
         {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             if (healthPoints == 0)
             {
-                AwardExperience(instigator);
+                AwardExperience(instigator);//put this after die
                 Die();
                 
             }
@@ -64,7 +68,7 @@ namespace RPG.Attribute
         public void RestoreState(object state)
         {
             healthPoints = (float)state;
-            if(healthPoints == 0)
+            if(healthPoints <= 0)
             {
                 Die();
             }
