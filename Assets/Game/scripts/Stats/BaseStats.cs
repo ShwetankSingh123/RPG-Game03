@@ -11,12 +11,33 @@ namespace RPG.Stats
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
 
+        private void Update()
+        {
+            if (gameObject.tag == "Player")
+            {
+                print(GetLevel());
+            }
+            
+        }
         public float GetStat(Stat stat)
         {
             return progression.GetStat(stat, characterClass, startinglevel);
         }
 
-        
+        public int GetLevel()
+        {
+            float currentXP = GetComponent<Experience>().GetPoints();
+            int penultimateLevel = progression.GetLevels(Stat.ExperienceToLevelUp, characterClass);
+            for (int level = 1; level <= penultimateLevel; level++)
+            {
+                float XPToLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass,level);
+                if(XPToLevelUp > currentXP)
+                {
+                    return level;
+                }
+            }
+            return penultimateLevel + 1;
+        }
         
     }
 }

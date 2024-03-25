@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace RPG.Attribute
+namespace RPG.Stats
 {
     public class ExperienceDisplay : MonoBehaviour
     {
