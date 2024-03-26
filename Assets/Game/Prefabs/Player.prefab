@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6706005968955153537, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
+      propertyPath: levelUpParticleEffect
+      value: 
+      objectReference: {fileID: 3237192794188089515, guid: 1f2cf544a0799294d8958c33024377d9, type: 3}
     - target: {fileID: 6946476201136023240, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: healthPoints
       value: 200
