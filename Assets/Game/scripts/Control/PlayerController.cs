@@ -10,7 +10,8 @@ namespace RPG.Control
     {
         Health health;
         // this script is responsible for controlling all the things like input controls 
-        void Start()
+
+        private void Awake()
         {
             health = GetComponent<Health>();
         }

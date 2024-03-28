@@ -4,6 +4,7 @@ using RPG.Core;
 using RPG.Movement;
 using System;
 using RPG.Attribute;
+using GameDevTV.Utils;
 
 namespace RPG.Control
 {
@@ -22,7 +23,7 @@ namespace RPG.Control
         Health health;
 
         //used for guarding behaviour
-        Vector3 guardPosition;
+        LazyValue<Vector3> guardPosition;
         Mover mover;
 
         //used for suspecious behaviour
@@ -33,16 +34,25 @@ namespace RPG.Control
         float timeSinceArrivedAtWaypoint = 3f;
 
 
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
-
             fighter = GetComponent<Fighter>();
             player = GameObject.FindWithTag("Player");
             health = GetComponent<Health>();
             mover = GetComponent<Mover>();
-            guardPosition = transform.position;
+            guardPosition = new LazyValue<Vector3>(GetGuardPosition);
+        }
 
+        private Vector3 GetGuardPosition()
+        {
+            return transform.position;
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            guardPosition.ForceInit();
+            
         }
 
         // Update is called once per frame
@@ -75,7 +85,7 @@ namespace RPG.Control
 
         private void PatrolBehaviour()
         {
-            Vector3 nextPosition = guardPosition;
+            Vector3 nextPosition = guardPosition.value;
             if(patrolPath!= null)
             {
                 if (AtWaypoint())
