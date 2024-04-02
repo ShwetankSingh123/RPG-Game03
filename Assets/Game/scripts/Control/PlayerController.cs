@@ -3,6 +3,7 @@ using RPG.Movement;
 using UnityEngine;
 using RPG.Core;
 using RPG.Attribute;
+using System;
 
 namespace RPG.Control
 {
@@ -10,6 +11,23 @@ namespace RPG.Control
     {
         Health health;
         // this script is responsible for controlling all the things like input controls 
+
+        enum CursorType
+        {
+            None,
+            Movement,
+            Combat
+        }
+
+        [System.Serializable]
+        struct CursorMapping
+        {
+            public CursorType type;
+            public Texture2D texture;
+            public Vector2 hotspot;
+        }
+
+        [SerializeField] CursorMapping[] cursorMappings = null;
 
         private void Awake()
         {
@@ -23,7 +41,7 @@ namespace RPG.Control
             if (InteractWithCombat()) { return; }
             if (InteractWithMovement()) { return; }
             //print("nothing is there");
-            
+            SetCursor(CursorType.None);
 
         }
 
@@ -43,10 +61,13 @@ namespace RPG.Control
                 {
                     GetComponent<Fighter>().Attack(target.gameObject);                   
                 }
+                SetCursor(CursorType.Combat);
                 return true;
             }
             return false;
         }
+
+        
 
         private bool InteractWithMovement()
         {
@@ -59,9 +80,28 @@ namespace RPG.Control
                     {
                         GetComponent<Mover>().StartMoveAction(hit.point,1f); 
                     }
+                SetCursor(CursorType.Movement);
                 return true;
             }
             return false;
+        }
+
+        private void SetCursor(CursorType type)
+        {
+            CursorMapping mapping = GetCursorMapping(type);
+            Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
+        }
+
+        private CursorMapping GetCursorMapping(CursorType type)
+        {
+            foreach(CursorMapping mapping in cursorMappings)
+            {
+                if (mapping.type == type)
+                {
+                    return mapping;
+                }
+            }
+            return cursorMappings[0];
         }
 
         private static Ray GetMouseRay()
