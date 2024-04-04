@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Core;
 using RPG.Attribute;
 using System;
+using UnityEngine.EventSystems;
 
 namespace RPG.Control
 {
@@ -37,12 +38,23 @@ namespace RPG.Control
 
         void Update()
         {
-            if(health.IsDead()) { return; }
+            if (InteractWithUI()) { return; }
+            if (health.IsDead()) 
+            {
+                SetCursor(CursorType.None);
+                return; 
+            }
+            
             if (InteractWithCombat()) { return; }
             if (InteractWithMovement()) { return; }
             //print("nothing is there");
             SetCursor(CursorType.None);
 
+        }
+
+        private bool InteractWithUI()
+        {
+            return EventSystem.current.IsPointerOverGameObject();
         }
 
         private bool InteractWithCombat()
