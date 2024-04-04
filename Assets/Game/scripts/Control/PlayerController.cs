@@ -17,7 +17,8 @@ namespace RPG.Control
         {
             None,
             Movement,
-            Combat
+            Combat,
+            UI
         }
 
         [System.Serializable]
@@ -44,7 +45,7 @@ namespace RPG.Control
                 SetCursor(CursorType.None);
                 return; 
             }
-            
+            if (InteractWithComponent()) { return; }
             if (InteractWithCombat()) { return; }
             if (InteractWithMovement()) { return; }
             //print("nothing is there");
@@ -52,9 +53,34 @@ namespace RPG.Control
 
         }
 
+        
+
         private bool InteractWithUI()
         {
-            return EventSystem.current.IsPointerOverGameObject();
+            if(EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
+                return true;
+            }
+            return false;
+        }
+
+        private bool InteractWithComponent()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            foreach (RaycastHit hit in hits)
+            {
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (IRaycastable raycastable in raycastables)
+                {
+                    if (raycastable.HandleRaycast(this))
+                    {
+                        SetCursor(CursorType.Combat);
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private bool InteractWithCombat()
