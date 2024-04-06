@@ -9,7 +9,16 @@ namespace RPG.Combat
     {
         public bool HandleRaycast(PlayerController callingController)
         {
-            throw new System.NotImplementedException();
+            
+            if (!callingController.GetComponent<Fighter>().CanAttack(gameObject)) { return false; }
+            
+
+            if (Input.GetMouseButton(0))
+            {
+                callingController.GetComponent<Fighter>().Attack(gameObject);
+            }
+            
+            return true;
         }
     }
 }

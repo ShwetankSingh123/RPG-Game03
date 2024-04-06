@@ -46,7 +46,7 @@ namespace RPG.Control
                 return; 
             }
             if (InteractWithComponent()) { return; }
-            if (InteractWithCombat()) { return; }
+            //if (InteractWithCombat()) { return; }
             if (InteractWithMovement()) { return; }
             //print("nothing is there");
             SetCursor(CursorType.None);
@@ -83,27 +83,27 @@ namespace RPG.Control
             return false;
         }
 
-        private bool InteractWithCombat()
-        {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            foreach (RaycastHit hit in hits)
-            {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+        //private bool InteractWithCombat()
+        //{
+        //    RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+        //    foreach (RaycastHit hit in hits)
+        //    {
+        //        CombatTarget target = hit.transform.GetComponent<CombatTarget>();
 
-                if(target == null) { continue; }
+        //        if(target == null) { continue; }
 
-                if (!GetComponent<Fighter>().CanAttack(target.gameObject)) {  continue; }
-                if (target == null) { continue; }
+        //        if (!GetComponent<Fighter>().CanAttack(target.gameObject)) {  continue; }
+        //        if (target == null) { continue; }
 
-                if(Input.GetMouseButton(0))
-                {
-                    GetComponent<Fighter>().Attack(target.gameObject);                   
-                }
-                SetCursor(CursorType.Combat);
-                return true;
-            }
-            return false;
-        }
+        //        if(Input.GetMouseButton(0))
+        //        {
+        //            GetComponent<Fighter>().Attack(target.gameObject);                   
+        //        }
+        //        SetCursor(CursorType.Combat);
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
         
 
