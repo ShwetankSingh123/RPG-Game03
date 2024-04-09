@@ -40,7 +40,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2648260762830981454}
+  - {fileID: 3472087548252390913}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -250,7 +250,7 @@ MonoBehaviour:
   progression: {fileID: 11400000, guid: 1f2f618981c54e3408d589549e10a0d4, type: 2}
   levelUpParticleEffect: {fileID: 0}
   shouldUseModifiers: 0
---- !u!1001 &1670743886039720485
+--- !u!1001 &270350861250391402
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -267,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3742262143759215467, guid: e040ce4724f9b5f4696434c2189d5568, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.17
       objectReference: {fileID: 0}
     - target: {fileID: 3742262143759215467, guid: e040ce4724f9b5f4696434c2189d5568, type: 3}
       propertyPath: m_LocalPosition.z
@@ -307,8 +307,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e040ce4724f9b5f4696434c2189d5568, type: 3}
---- !u!4 &2648260762830981454 stripped
+--- !u!4 &3472087548252390913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3742262143759215467, guid: e040ce4724f9b5f4696434c2189d5568, type: 3}
-  m_PrefabInstance: {fileID: 1670743886039720485}
+  m_PrefabInstance: {fileID: 270350861250391402}
   m_PrefabAsset: {fileID: 0}
