@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4467801994752917093}
   - component: {fileID: 2339766701754348903}
   - component: {fileID: 1437566442061226845}
-  - component: {fileID: 59860402426568903}
   - component: {fileID: 4028606734910185849}
+  - component: {fileID: 243462864140662686}
+  - component: {fileID: 8024895927683927508}
   m_Layer: 5
   m_Name: Damage Text
   m_TagString: Untagged
@@ -31,8 +32,8 @@ RectTransform:
   m_GameObject: {fileID: 1801242258206598555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1246483423143747950}
   m_Father: {fileID: 3742262143759215467}
@@ -116,7 +117,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d732c662eedc01845a8bf74f9b510a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!111 &59860402426568903
+--- !u!225 &4028606734910185849
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801242258206598555}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!111 &243462864140662686
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,18 +145,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!225 &4028606734910185849
-CanvasGroup:
+--- !u!114 &8024895927683927508
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801242258206598555}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0e0edd71bfd3a4b99224a16dc77c0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetToDestroy: {fileID: 6331584200059305542}
 --- !u!1 &6331584200059305542
 GameObject:
   m_ObjectHideFlags: 0
