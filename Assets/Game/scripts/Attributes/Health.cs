@@ -92,9 +92,13 @@ namespace RPG.Attribute
 
         public float GetPercentage()
         {
-            return 100* (healthPoints.value/GetComponent<BaseStats>().GetStat(Stat.Health));
+            return 100* (GetFraction());
         }
 
+        public float GetFraction()
+        {
+            return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
         public bool IsDead()
         {
             return isDead;

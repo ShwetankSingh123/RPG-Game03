@@ -224,6 +224,17 @@ MonoBehaviour:
   waypointTolerance: 1
   waypointDwellTime: 3
   patrolSpeedFraction: 0.2
+--- !u!114 &7596870366054400939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6946476201136023240, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
+  m_PrefabInstance: {fileID: 651709215457912163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5067822056785708583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a14288ff40ff0469966ec9cf64b13d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4817794589614959574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,6 +286,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6130739804095448379, guid: 1f01826bf47715d4a8cc0a9c0cb85e0b, type: 3}
+      propertyPath: healthComponent
+      value: 
+      objectReference: {fileID: 7596870366054400939}
     - target: {fileID: 7434641253621156873, guid: 1f01826bf47715d4a8cc0a9c0cb85e0b, type: 3}
       propertyPath: m_Name
       value: Health bar
