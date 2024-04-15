@@ -42,13 +42,21 @@ namespace RPG.SceneManagement
             
             Fader fader = FindObjectOfType<Fader>();
             SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
-            yield return fader.FadeOut(fadeOutTime); //error solve later
+            PlayerController playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
+            //remove player control
+            playerController.enabled = false;
+
+            yield return fader.FadeOut(fadeOutTime); 
 
             
             savingWrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
+            //remove control from new player
+            PlayerController newPlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            newPlayerController.enabled = false;
             savingWrapper.Load();
             
             Portal otherPortal = GetOtherPortal();
@@ -58,7 +66,10 @@ namespace RPG.SceneManagement
             print("fade out done");
             print(gameObject.name);
             yield return new WaitForSeconds(fadeWaitTime);            
-            yield return fader.FadeIn(fadeInTime);            
+            fader.FadeIn(fadeInTime);
+
+            //restore control
+            newPlayerController.enabled = true;
             Destroy(gameObject);
         }
 
