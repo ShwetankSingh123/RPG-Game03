@@ -53,7 +53,7 @@ namespace RPG.Attribute
         }
         public void TakeDamage(GameObject instigator,float damage)
         {
-            print(gameObject.name + " took damage : " + damage);
+            //print(gameObject.name + " took damage : " + damage);
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
             
             if (healthPoints.value == 0)
@@ -67,6 +67,11 @@ namespace RPG.Attribute
             {
                 takeDamage.Invoke(damage);
             }
+        }
+
+        public void Heal(float HealthToRestore)
+        {
+            healthPoints.value = Mathf.Min(healthPoints.value + HealthToRestore, GetMaxHealthPoints());
         }
 
         private void AwardExperience(GameObject instigator)
