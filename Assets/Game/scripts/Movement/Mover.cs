@@ -11,8 +11,11 @@ namespace RPG.Movement
 {
     public class Mover : MonoBehaviour, IAction, ISaveable
     {
-        //[SerializeField] Transform target;
+        [SerializeField] Transform target;
         [SerializeField] float maxSpeed = 6f;
+        [SerializeField] float maxNavPathLength = 40;
+
+
         NavMeshAgent agent;
         Health health;
 
@@ -28,13 +31,8 @@ namespace RPG.Movement
             UpdateAnimator();
         }
 
-        private void UpdateAnimator()
-        {
-            Vector3 globalVal = agent.velocity;
-            Vector3 localVal = transform.InverseTransformDirection(globalVal);
-            float speed = localVal.z;
-            GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
-        }
+
+        
 
         public void StartMoveAction(Vector3 destination, float speedFraction)
         {
@@ -44,6 +42,17 @@ namespace RPG.Movement
 
         }
 
+
+        public bool CanMoveTo(Vector3 destination)
+        {
+            NavMeshPath path = new NavMeshPath(); //path can never be null because it is of refrence type
+            bool hasPath = NavMesh.CalculatePath(transform.position, destination, NavMesh.AllAreas, path);
+            if (!hasPath) { return false; }
+            if (path.status != NavMeshPathStatus.PathComplete) { return false; }
+            if (GetPathLength(path) > maxNavPathLength) { return false; }
+
+            return true;
+        }
 
         public void MoveTo(Vector3 destination, float speedFraction)
         {
@@ -56,6 +65,28 @@ namespace RPG.Movement
         public void Cancel()
         {
             agent.isStopped = true;
+        }
+
+
+
+        private float GetPathLength(NavMeshPath path)
+        {
+            float total = 0;
+            if (path.corners.Length < 2) return total;
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                total += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+            }
+            print(total);
+            return total;
+        }
+
+        private void UpdateAnimator()
+        {
+            Vector3 globalVal = agent.velocity;
+            Vector3 localVal = transform.InverseTransformDirection(globalVal);
+            float speed = localVal.z;
+            GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
         }
 
         public object CaptureState()
