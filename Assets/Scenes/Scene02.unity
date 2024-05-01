@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1127632, g: 0.28161776, b: 0.7091669, a: 1}
+  m_Sun: {fileID: 1671171110}
+  m_IndirectSpecularColor: {r: 0.36295033, g: 0.56618935, b: 0.8437085, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 0d2829b1e7f1f864ea07ef0b0429ce15, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -970,7 +970,7 @@ Terrain:
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -1429,7 +1429,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7630178816836323914, guid: 88d5a4a46528cf24ca0df6af617b791e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2385437
+      value: -2.238544
       objectReference: {fileID: 0}
     - target: {fileID: 7630178816836323914, guid: 88d5a4a46528cf24ca0df6af617b791e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1489,7 +1489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7630178818034724415, guid: 88d5a4a46528cf24ca0df6af617b791e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2385437
+      value: -2.238544
       objectReference: {fileID: 0}
     - target: {fileID: 7630178818034724415, guid: 88d5a4a46528cf24ca0df6af617b791e, type: 3}
       propertyPath: m_LocalPosition.y

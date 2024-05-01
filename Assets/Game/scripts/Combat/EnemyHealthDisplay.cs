@@ -1,6 +1,8 @@
-using RPG.Attribute;
 using UnityEngine;
 using UnityEngine.UI;
+
+using RPG.Attribute;
+
 
 namespace RPG.Combat
 {

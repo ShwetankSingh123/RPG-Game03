@@ -1,8 +1,8 @@
-using RPG.Saving;
+
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+using RPG.Saving;
 
 namespace RPG.Stats
 {

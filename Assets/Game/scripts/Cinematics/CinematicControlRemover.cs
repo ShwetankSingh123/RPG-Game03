@@ -1,8 +1,9 @@
+using UnityEngine;
+using UnityEngine.Playables;
+
 using RPG.Control;
 using RPG.Core;
 
-using UnityEngine;
-using UnityEngine.Playables;
 
 namespace RPG.Cinematics
 {

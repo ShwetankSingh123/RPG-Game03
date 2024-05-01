@@ -1,11 +1,11 @@
-using RPG.Combat;
-using RPG.Movement;
 using UnityEngine;
-using RPG.Core;
-using RPG.Attribute;
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.AI;
+
+using RPG.Movement;
+using RPG.Attribute;
+
 
 namespace RPG.Control
 {

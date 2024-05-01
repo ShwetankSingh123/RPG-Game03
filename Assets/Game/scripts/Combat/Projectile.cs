@@ -1,7 +1,8 @@
-using RPG.Attribute;
-using RPG.Core;
+
 using UnityEngine;
 using UnityEngine.Events;
+
+using RPG.Attribute;
 
 namespace RPG.Combat
 {
