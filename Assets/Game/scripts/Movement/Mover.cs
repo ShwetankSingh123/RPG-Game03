@@ -78,7 +78,7 @@ namespace RPG.Movement
             {
                 total += Vector3.Distance(path.corners[i], path.corners[i + 1]);
             }
-            print(total);
+            //print(total);
             return total;
         }
 

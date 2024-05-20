@@ -119,6 +119,7 @@ namespace RPG.Attribute
                 return;
             }
             isDead = true;
+
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<ActionSchedular>().CancelCurrentAction();
             

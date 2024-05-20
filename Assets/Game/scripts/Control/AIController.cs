@@ -154,7 +154,7 @@ namespace RPG.Control
         private void SuspiciousBehaviour()
         {
             GetComponent<ActionSchedular>().CancelCurrentAction();
-            print("suspisious");
+            //print("suspisious");
         }
 
         private bool IsAggrevated()

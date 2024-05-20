@@ -21,6 +21,7 @@ namespace RPG.Stats
 
         public float GetPoints()
         {
+            //print(experiencePoints);
             return experiencePoints; 
         }
 
