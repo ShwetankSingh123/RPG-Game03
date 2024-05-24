@@ -1,3 +1,4 @@
+using RPG.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -21,7 +22,7 @@ namespace RPG.MainMen
         private string sceneToLoad = "SceneToLoad";
         public Button newGameButton;
         public Button continueButton;
-        //SavingWrapper savingWrapper;
+        SavingWrapper savingWrapper;
 
         static bool hasSpawned = false;
 
@@ -48,7 +49,8 @@ namespace RPG.MainMen
 
         private void Start()
         {
-            //SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            
+            
             // Check if there is saved progress
             if (PlayerPrefs.HasKey(ProgressKey))
             {
@@ -141,7 +143,11 @@ namespace RPG.MainMen
             // Load the saved game state and continue
             //int savedLevel = PlayerPrefs.GetInt(ProgressKey);
             //SceneManager.LoadScene(savedLevel); // Replace with your level loading logic
-            Play(PlayerPrefs.GetString("SceneToLoad"));
+            //Play(PlayerPrefs.GetString("SceneToLoad"));
+
+            //savingWrapper.donebaby = true;
+            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            StartCoroutine(savingWrapper.LoadLastScene());
 
         }
     }
