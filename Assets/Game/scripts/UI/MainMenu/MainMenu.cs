@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Cinemachine;
 
 namespace RPG.MainMen
 {
@@ -24,9 +25,9 @@ namespace RPG.MainMen
         public Button continueButton;
         SavingWrapper savingWrapper;
 
-        static bool hasSpawned = false;
+        //static bool hasSpawned = false;
 
-
+        public CinemachineVirtualCamera currentCamera;
 
 
 
@@ -39,18 +40,12 @@ namespace RPG.MainMen
             //hasSpawned = true;
         }
 
-        private void SpawnPersistentObjects()
-        {
-
-            //DontDestroyOnLoad(this.gameObject);
-
-        }
+        
 
 
         private void Start()
         {
-            
-            
+            currentCamera.Priority++;
             // Check if there is saved progress
             if (PlayerPrefs.HasKey(ProgressKey))
             {
@@ -84,6 +79,11 @@ namespace RPG.MainMen
         public void Exit()
         {
             Application.Quit();
+        }
+
+        public void Option()
+        {
+
         }
 
         IEnumerator LoadLevelAsync(string sceneToLoad)
@@ -129,8 +129,7 @@ namespace RPG.MainMen
 
         void StartNewGame()
         {
-            // Load the first level or reset the game state
-            //SceneManager.LoadScene(1); // Replace with your first level scene name
+            
             //savingWrapper.Delete();
             Play("Scene01");
             File.Delete(Path.Combine(Application.persistentDataPath, "save" + ".sav"));  //this code is taken from SavingSystem.cs
@@ -150,5 +149,13 @@ namespace RPG.MainMen
             StartCoroutine(savingWrapper.LoadLastScene());
 
         }
+
+        public void UpdateCamera(CinemachineVirtualCamera target)
+        {
+            currentCamera.Priority--;
+            currentCamera = target;
+            currentCamera.Priority++;
+        }
+        
     }
 }
